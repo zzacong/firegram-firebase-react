@@ -7,7 +7,8 @@ function Modal() {
   const { selectedImg, setSelectedImg } = useImage()
 
   const handleClick = e => {
-    if (e.target.classList.contains('backdrop')) {
+    const classList = e.target.classList
+    if (classList.contains('backdrop') || classList.contains('close')) {
       setSelectedImg(null)
     }
   }
@@ -26,6 +27,13 @@ function Modal() {
           initial={{ y: '-100vh' }}
           animate={{ y: 0 }}
         />
+        <motion.button
+          className="close"
+          onClick={handleClick}
+          whileHover={{ opacity: 0.8 }}
+        >
+          &#10005;
+        </motion.button>
       </motion.div>
     )
   )

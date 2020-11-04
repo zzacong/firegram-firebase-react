@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { addScaleCorrection, motion } from 'framer-motion'
 
 import useFirestore from '../hooks/useFirestore'
 import useImage from '../hooks/useImage'
@@ -18,7 +18,7 @@ function ImageGrid() {
             className="img-wrap"
             onClick={() => setSelectedImg(doc.url)}
             // Framer-motion attribute
-            whileHover={{ opacity: 1 }}
+            whileHover={{ opacity: 1, scale: 1.1, zIndex: 1 }}
             layout
           >
             <motion.img
