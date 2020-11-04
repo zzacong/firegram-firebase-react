@@ -1,12 +1,21 @@
-import React from 'react';
-import Title from './comps/Title';
+import React from 'react'
+import ImageGrid from './components/ImageGrid'
+import Modal from './components/Modal'
+import Title from './components/Title'
+import UploadForm from './components/UploadForm'
+import ImageContextProvider from './contexts/ImageContext'
 
 function App() {
   return (
-    <div className="App">
-      <Title/>
-    </div>
-  );
+    <ImageContextProvider>
+      <div className="App">
+        <Title />
+        <UploadForm />
+        <ImageGrid />
+        <Modal />
+      </div>
+    </ImageContextProvider>
+  )
 }
 
-export default App;
+export default App
