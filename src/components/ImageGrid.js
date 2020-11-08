@@ -1,5 +1,5 @@
 import React from 'react'
-import { addScaleCorrection, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import useFirestore from '../hooks/useFirestore'
 import useImage from '../hooks/useImage'
