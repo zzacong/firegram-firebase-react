@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "firegram-15a80",
     "public": "build",
     "ignore": [
       "firebase.json",

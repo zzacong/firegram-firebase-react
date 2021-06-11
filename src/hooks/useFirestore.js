@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import { projectFirestore } from '../firebase/config'
+import { firestore } from '../firebase/config'
 
 const useFirestore = collection => {
   const [docs, setDocs] = useState([])
 
   useEffect(() => {
-    const unsubscribe = projectFirestore
+    const unsubscribe = firestore
       .collection(collection)
       .orderBy('createdAt', 'desc')
       .onSnapshot(snap => {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { projectStorage, projectFirestore, timestamp } from '../firebase/config'
+import { storage, firestore, timestamp } from '../firebase/config'
 
 const useStorage = file => {
   const [progress, setProgress] = useState(0)
@@ -8,8 +8,8 @@ const useStorage = file => {
 
   useEffect(() => {
     // References
-    const storageRef = projectStorage.ref(file.name)
-    const collectionRef = projectFirestore.collection('images')
+    const storageRef = storage.ref(file.name)
+    const collectionRef = firestore.collection('images')
 
     storageRef.put(file).on(
       'state_changed',
