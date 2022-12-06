@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 
 import useImage from '../hooks/useImage'
@@ -26,6 +25,7 @@ function Modal() {
           alt="enlarged pic"
           initial={{ y: '-100vh' }}
           animate={{ y: 0 }}
+          loading="lazy"
         />
         <motion.button
           className="close"

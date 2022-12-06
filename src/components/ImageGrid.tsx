@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 
 import useFirestore from '../hooks/useFirestore'
@@ -7,7 +6,6 @@ import useImage from '../hooks/useImage'
 function ImageGrid() {
   const { docs } = useFirestore('images')
   const { setSelectedImg } = useImage()
-  // console.log(docs)
 
   return (
     <div className="img-grid">
@@ -27,6 +25,7 @@ function ImageGrid() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
+              loading="lazy"
             />
           </motion.div>
         ))}

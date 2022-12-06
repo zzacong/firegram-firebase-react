@@ -1,20 +1,26 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import useStorage from '../hooks/useStorage'
 import ProgressBar from './ProgressBar'
 
-function UploadForm() {
-  const [file, setFile] = useState(null)
+export default function UploadForm() {
+  const [file, setFile] = useState<File>()
   const [error, setError] = useState('')
+
+  const [progress, setProgress] = useState(0)
+
+  const { uploadFile } = useStorage({ setProgress })
 
   const types = ['image/jpeg', 'image/png']
 
-  const handleChange = e => {
-    let selected = e.target.files[0]
-    // console.log(selected)
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = async e => {
+    const selected = e.target.files?.[0]
     if (selected && types.includes(selected.type)) {
       setFile(selected)
+      await uploadFile(selected)
+      setFile(undefined)
       setError('')
     } else {
-      setFile(null)
+      setFile(undefined)
       setError('Please select an image file (.jpg or .png)')
     }
   }
@@ -28,10 +34,10 @@ function UploadForm() {
       <div className="output">
         {error && <div className="error">{error}</div>}
         {file && <div>{file.name}</div>}
-        {file && <ProgressBar file={file} setFile={setFile} />}
+        {file && <ProgressBar progress={progress} />}
       </div>
     </form>
   )
 }
 
-export default UploadForm
+UploadForm

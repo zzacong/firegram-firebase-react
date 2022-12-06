@@ -1,4 +1,3 @@
-import React from 'react'
 import ImageGrid from './components/ImageGrid'
 import Modal from './components/Modal'
 import Title from './components/Title'

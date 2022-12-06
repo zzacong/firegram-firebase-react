@@ -1,18 +1,16 @@
+import type firebase from 'firebase'
 import { useState, useEffect } from 'react'
 import { firestore } from '../firebase/config'
 
-const useFirestore = collection => {
-  const [docs, setDocs] = useState([])
+const useFirestore = (collection: string) => {
+  const [docs, setDocs] = useState<firebase.firestore.DocumentData[]>([])
 
   useEffect(() => {
     const unsubscribe = firestore
       .collection(collection)
       .orderBy('createdAt', 'desc')
       .onSnapshot(snap => {
-        const documents = []
-        snap.forEach(doc => {
-          documents.push({ ...doc.data(), id: doc.id })
-        })
+        const documents = snap.docs.map(doc => ({ ...doc.data(), id: doc.id }))
         setDocs(documents)
       })
 

@@ -4,13 +4,13 @@ import 'firebase/firestore'
 
 // FIREBASE WEB APP CONFIG
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: 'firegram-15a80.firebaseapp.com',
   databaseURL: 'https://firegram-15a80.firebaseio.com',
   projectId: 'firegram-15a80',
   storageBucket: 'firegram-15a80.appspot.com',
   messagingSenderId: '774972276983',
-  appId: process.env.REACT_APP_APP_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 }
 
 // INITIALIZE FIREBASE
